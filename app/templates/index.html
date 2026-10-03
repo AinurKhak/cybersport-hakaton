@@ -7,42 +7,94 @@
 
     <title>EAI CS2</title>
 
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/style.css?v=5">
 </head>
 
 <body>
 
-<header class="header">
-    <div class="header-inner">
+<header class="topbar">
 
-        <div class="brand">
-            <div class="brand-icon">EAI</div>
+    <div class="topbar-inner">
 
-            <div>
-                <h1>EAI CS2</h1>
-                <p>Esports AI Image Analysis</p>
-            </div>
-        </div>
+        <a class="logo" href="/">
+            <span class="logo-main">EAI</span>
+            <span class="logo-game">CS2</span>
+        </a>
 
-        <div class="header-status">
-            <span class="status-dot"></span>
-            ImageScope
+        <nav class="nav">
+            <a href="#analysis">Анализ</a>
+            <a href="#results-section">Результаты</a>
+            <a
+                href="https://www.cybersport.ru/teams/cs2"
+                target="_blank"
+            >
+                Команды
+            </a>
+        </nav>
+
+        <div class="project-tag">
+            IMAGESCOPE
         </div>
 
     </div>
+
 </header>
 
 
-<main class="container">
+<main>
 
-    <!-- Панель запуска -->
-    <section class="control-panel">
+    <!-- HERO -->
 
-        <div class="panel-head">
+    <section class="hero">
+
+        <div class="hero-inner">
+
+            <div class="hero-content">
+
+                <div class="hero-kicker">
+                    CS2 · IMAGE PROCESSING
+                </div>
+
+                <h1>
+                    Визуальный анализ<br>
+                    команд CS2
+                </h1>
+
+                <p>
+                    Изображения команд с Cybersport.ru,
+                    обработка NumPy и PyTorch.
+                </p>
+
+            </div>
+
+
+            <div class="hero-number">
+                <span>01</span>
+                IMAGE LAB
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYSIS -->
+
+    <section
+        id="analysis"
+        class="section"
+    >
+
+        <div class="section-head">
 
             <div>
-                <span class="eyebrow">SOURCE</span>
-                <h2>CS2 Teams</h2>
+                <span class="section-index">
+                    01
+                </span>
+
+                <h2>
+                    Запустить анализ
+                </h2>
             </div>
 
             <a
@@ -50,18 +102,22 @@
                 href="https://www.cybersport.ru/teams/cs2"
                 target="_blank"
             >
-                Cybersport.ru ↗
+                CYBERSPORT.RU ↗
             </a>
 
         </div>
 
 
-        <div class="controls">
+        <div class="analysis-panel">
 
             <div class="control">
-                <label for="filter">Обработка</label>
+
+                <label for="filter">
+                    Фильтр
+                </label>
 
                 <select id="filter">
+
                     <option value="grayscale">
                         Grayscale + Sharpen
                     </option>
@@ -69,13 +125,16 @@
                     <option value="invert">
                         Invert + Sharpen
                     </option>
+
                 </select>
+
             </div>
 
 
-            <div class="control small-control">
+            <div class="control number-control">
+
                 <label for="maxImages">
-                    Изображения
+                    Изображений
                 </label>
 
                 <input
@@ -83,70 +142,134 @@
                     type="number"
                     min="1"
                     max="100"
-                    value="100"
+                    value="10"
                 >
+
             </div>
 
 
             <button id="analyzeButton">
-                <span>Запустить анализ</span>
-                <span class="button-arrow">→</span>
+
+                <span>
+                    Запустить
+                </span>
+
+                <span class="arrow">
+                    ↗
+                </span>
+
             </button>
 
         </div>
 
 
         <div id="status" class="status">
-            <span class="status-indicator"></span>
+
+            <span class="live-dot"></span>
+
             Готово к запуску
+
         </div>
 
     </section>
 
 
-    <!-- Общая статистика -->
-    <section id="summary" class="summary hidden">
+    <!-- SUMMARY -->
 
-        <div class="summary-card">
-            <span>Обработано</span>
-            <strong id="totalSuccessful">0</strong>
+    <section
+        id="summary"
+        class="summary hidden"
+    >
+
+        <div class="summary-item">
+
+            <span class="summary-label">
+                ОБРАБОТАНО
+            </span>
+
+            <strong id="totalSuccessful">
+                0
+            </strong>
+
         </div>
 
-        <div class="summary-card">
-            <span>Фильтр</span>
-            <strong id="usedFilter">—</strong>
+
+        <div class="summary-item">
+
+            <span class="summary-label">
+                ФИЛЬТР
+            </span>
+
+            <strong id="usedFilter">
+                —
+            </strong>
+
         </div>
 
-        <div class="summary-card">
-            <span>Ошибки</span>
-            <strong id="errorsCount">0</strong>
+
+        <div class="summary-item">
+
+            <span class="summary-label">
+                ОШИБКИ
+            </span>
+
+            <strong id="errorsCount">
+                0
+            </strong>
+
         </div>
 
     </section>
 
 
-    <!-- Результаты -->
-    <section class="results-section">
+    <!-- RESULTS -->
 
-        <div class="section-title">
+    <section
+        id="results-section"
+        class="section results-wrapper"
+    >
+
+        <div class="section-head">
+
             <div>
-                <span class="eyebrow">ANALYSIS</span>
-                <h2>Результаты</h2>
+                <span class="section-index">
+                    02
+                </span>
+
+                <h2>
+                    Результаты
+                </h2>
             </div>
+
+            <span class="section-side">
+                BEFORE / AFTER
+            </span>
+
         </div>
 
-        <section id="results" class="results"></section>
+
+        <div
+            id="results"
+            class="results"
+        ></div>
 
     </section>
 
 
-    <!-- Ошибки -->
-    <section id="errorsSection" class="errors-section hidden">
+    <!-- ERRORS -->
 
-        <div class="section-title">
-            <span class="eyebrow error-label">ERROR LOG</span>
-            <h2>Ошибки обработки</h2>
-        </div>
+    <section
+        id="errorsSection"
+        class="errors-section hidden"
+    >
+
+        <span class="section-index">
+            ERR
+        </span>
+
+        <h2>
+            Ошибки обработки
+        </h2>
 
         <div id="errors"></div>
 
@@ -156,11 +279,17 @@
 
 
 <footer>
-    EAI CS2 · ImageScope Hackathon
+
+    <strong>EAI CS2</strong>
+
+    <span>
+        ImageScope Hackathon · 2026
+    </span>
+
 </footer>
 
 
-<script src="/static/script.js"></script>
+<script src="/static/script.js?v=5"></script>
 
 </body>
 </html>

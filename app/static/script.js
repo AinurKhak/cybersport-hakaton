@@ -48,10 +48,10 @@ async function runAnalysis() {
 
     if (
         maxImages < 1 ||
-        maxImages > 20
+        maxImages > 100
     ) {
         alert(
-            "Количество изображений должно быть от 1 до 20"
+            "Количество изображений должно быть от 1 до 100"
         );
 
         return;

@@ -23,7 +23,7 @@ templates = Jinja2Templates(directory=os.path.join(os.path.dirname(__file__), "t
 # --- Pydantic Модели (Требование ТЗ: структурированный JSON) ---
 class AnalyzeRequest(BaseModel):
     filter_name: str = "default"
-    max_images: int = 10
+    max_images: int = 100
 
 class ImageStats(BaseModel):
     width: int
@@ -50,15 +50,17 @@ class AnalyzeResponse(BaseModel):
 # --- Эндпоинты ---
 @app.get("/", response_class=HTMLResponse)
 async def get_frontend(request: Request):
-    """Открывает графический интерфейс (Требование ТЗ п.3)"""
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html"
+    )
 
 @app.get("/health")
-def health_check():
+async def health_check():
     return {"status": "ok", "service": "hackathon_imagescope"}
 
 @app.post("/api/analyze", response_model=AnalyzeResponse)
-def analyze_images(req: AnalyzeRequest):
+async def analyze_images(req: AnalyzeRequest):
     target_url = "https://www.cybersport.ru/teams/cs2"
     
     # 1. Парсинг ссылок

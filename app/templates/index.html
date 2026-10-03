@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ImageScope Esports</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>ImageScope Esports</h1>
+        <p>Анализ изображений киберспортивных команд CS2</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="panel">
+
+        <div class="source">
+            <span>Источник</span>
+            <strong>Cybersport.ru — команды CS2</strong>
+        </div>
+
+        <div class="controls">
+
+            <div class="control">
+                <label for="filter">Фильтр</label>
+
+                <select id="filter">
+                    <option value="grayscale">
+                        Grayscale + Sharpen
+                    </option>
+
+                    <option value="invert">
+                        Invert + Sharpen
+                    </option>
+                </select>
+            </div>
+
+            <div class="control">
+                <label for="maxImages">
+                    Количество изображений
+                </label>
+
+                <input
+                    id="maxImages"
+                    type="number"
+                    value="10"
+                    min="1"
+                    max="20"
+                >
+            </div>
+
+            <button id="analyzeButton">
+                Запустить анализ
+            </button>
+
+        </div>
+
+        <div id="status" class="status">
+            Готово к запуску
+        </div>
+
+    </section>
+
+
+    <section id="summary" class="summary hidden">
+
+        <div class="summary-card">
+            <span>Обработано</span>
+            <strong id="totalSuccessful">0</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>Фильтр</span>
+            <strong id="usedFilter">—</strong>
+        </div>
+
+        <div class="summary-card">
+            <span>Ошибок</span>
+            <strong id="errorsCount">0</strong>
+        </div>
+
+    </section>
+
+
+    <section id="results" class="results"></section>
+
+
+    <section id="errorsSection" class="errors-section hidden">
+
+        <h2>Ошибки</h2>
+
+        <div id="errors"></div>
+
+    </section>
+
+</main>
+
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

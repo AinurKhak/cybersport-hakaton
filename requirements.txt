@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+httpx
+beautifulsoup4
+pydantic
+numpy
+torch
+torchvision
+Pillow
+jinja2
